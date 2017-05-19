@@ -44,7 +44,7 @@ def send_message(recipient_id, message_text):
     :param message_text: The message to be sent to the recipient.
     :return: None
     """
-    if message_text == 'NULL' or message_text is None:
+    if message_text == 'NULL' or (is_ascii(message_text) is False) or message_text is None:
         return
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
@@ -84,9 +84,9 @@ def get_answer_feedback(asker_id, responder_id, question_id, question):
     quick_reply_buttons = dict()
     for rating_text, rating_point in ANSWER_RATING_POINTS.iteritems():
         quick_reply_buttons = add_quick_reply(quick_reply_buttons, rating_text,
-                                              "{0}, {1}, {2}, {3}, {4}".format(
+                                              set_payload('rating', "{0}, {1}, {2}, {3}, {4}".format(
                                                   rating_point, rating_text, responder_id, question_id, question)
-                                              )
+                                              ))
 
     data = json.dumps({
         "recipient": {
