@@ -6,6 +6,9 @@ __pycache__/
 # virtualenv
 qbeak/
 
+# idea
+.idea/
+
 # C extensions
 *.so
 

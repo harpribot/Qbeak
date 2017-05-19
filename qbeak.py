@@ -14,7 +14,7 @@ app = Flask(__name__)
 @app.route('/')
 def info():
     """
-    Displays on the website of the page. @TODO - Add index.html for the site of Ubik.
+    Displays on the website of the page.
 
     :return: response for each get request on '/'.
     """

@@ -23,7 +23,7 @@ class Question:
         is_question_stored = False
         try:
             self.cur.execute(
-                "INSERT INTO question (question, asker_id, has_answer) VALUES (%s, %s, %s) RETURNING question_id;",
+                "INSERT INTO questions (question, asker_id, has_answer) VALUES (%s, %s, %s) RETURNING question_id;",
                 (question, str(asker_id), False))
             question_id = self.cur.fetchone()[0]
             is_question_stored = True
@@ -42,7 +42,7 @@ class Question:
         """
         try:
             self.cur.execute(
-                "UPDATE question SET has_answer=TRUE WHERE question_id=%s",
+                "UPDATE questions SET has_answer=TRUE WHERE question_id=%s",
                 (question_id,)
             )
         except Exception, ex:
