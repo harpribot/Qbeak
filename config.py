@@ -11,8 +11,13 @@ WIT_AI_ACCESS_TOKEN = os.environ["WIT_AI_ACCESS_TOKEN"]
 
 # Offline data sources
 FACTS_SOURCE_FILE = 'data/facts.json'
+GOODBYE_SOURCE_FILE = 'data/goodbye.json'
+GREETING_SOURCE_FILE = 'data/greeting.json'
 JOKES_SOURCE_FILE = 'data/jokes.json'
+MOTIVATIONS_SOURCE_FILE = 'data/motivations.json'
+PUZZLES_SOURCE_FILE = 'data/puzzles.json'
 QUOTES_SOURCE_FILE = 'data/quotes.json'
+TAGS_SOURCE_FILE = 'data/tags.json'
 
 # API Keys
 # GOODREADS_ACCESS_TOKEN = os.environ["GOODREADS_ACCESS_TOKEN"]

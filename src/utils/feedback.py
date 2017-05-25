@@ -3,19 +3,23 @@ import random
 import wikipedia
 from templates.generic import *
 from templates.text import TextTemplate
+import config
 
-JOKES_DATA = open('data/jokes.json').read()
+JOKES_DATA = open(config.JOKES_SOURCE_FILE).read()
 JOKES = json.loads(JOKES_DATA)['jokes']
-GREETING_DATA = open('data/greeting.json').read()
+GREETING_DATA = open(config.GREETING_SOURCE_FILE).read()
 GREETING = json.loads(GREETING_DATA)['greeting']
-GOODBYE_DATA = open('data/goodbye.json').read()
+GOODBYE_DATA = open(config.GREETING_SOURCE_FILE).read()
 GOODBYE = json.loads(GOODBYE_DATA)['bye']
-MOTIVATION_DATA = open('data/motivations.json').read()
+MOTIVATION_DATA = open(config.MOTIVATIONS_SOURCE_FILE).read()
 MOTIVATION = json.loads(MOTIVATION_DATA)['motivations']
-PUZZLE_DATA = open('data/puzzles.json').read()
+PUZZLE_DATA = open(config.PUZZLES_SOURCE_FILE).read()
 PUZZLE = json.loads(PUZZLE_DATA)['puzzles']
-QUOTES_JSON = open('data/quotes.json').read()
+QUOTES_JSON = open(config.QUOTES_SOURCE_FILE).read()
 QUOTES = json.loads(QUOTES_JSON)['quotes']
+FACTS_JSON = open(config.FACTS_SOURCE_FILE).read()
+FACTS = json.loads(FACTS_JSON)['facts']
+
 MAX_PROFANITY = 5
 ADMIN_EMAIL = 'harshalpriyadarshi6@gmail.com'
 
@@ -37,6 +41,18 @@ def about_response():
            "If you ask indecent questions or give inappropriate answers you will get substantial hit" \
            "to your karma score and may lose your access to my service. We get feedback on your questions and" \
            "answers and closely monitor them.\n"
+
+
+def question_answer_help_response():
+    return "1. To ask a question\n<Question Text> ?\n\n" \
+           "Example:\nWho is Ubik?\n\n" \
+           "NOTE: Your question should end with question mark(?)\n" \
+           "------------------------------\n\n" \
+           "2. To give an answer to a question\n[<question id (qid)>] <Answer Text>\n\n" \
+           "Example:\n[108] Ubik is a Zombie who is getting younger by getting you answers" \
+           "to your questions\n\nType 'done' to complete answering, or 'cancel' to cancel he present response\n\n" \
+           "NOTE: The above example is an answer to a question with qid=108\n" \
+           "------------------------------\n"
 
 
 def sample_examples_response():
@@ -79,6 +95,10 @@ def joke_response():
 
 def bye_response():
     return random.choice(GOODBYE)
+
+
+def facts_response():
+    return random.choice(FACTS)
 
 
 def greeting_response():

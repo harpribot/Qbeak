@@ -2,7 +2,8 @@ import os
 import config
 import requests
 from src.utils.feedback import joke_response, wiki_response, confusion_response, help_response, bye_response,\
-    greeting_response, sample_examples_response, about_response, quotes_response, motivations_response, puzzles_response
+    greeting_response, sample_examples_response, about_response, quotes_response, motivations_response,\
+    puzzles_response, facts_response, question_answer_help_response
 
 WIT_AI_ACCESS_TOKEN = os.environ.get('WIT_AI_ACCESS_TOKEN', config.WIT_AI_ACCESS_TOKEN)
 
@@ -60,14 +61,18 @@ class BrainWit:
                     else:
                         response = confusion_response()
 
-            elif trait == 'greeting' and confidence > 0.5:
+            elif trait == 'greeting' and confidence > 0.6:
                 response = greeting_response()
-            elif trait == 'examples' and confidence > 0.5:
+            elif trait == 'examples' and confidence > 0.6:
                 response = sample_examples_response()
-            elif trait == 'goodbye' and confidence > 0.5:
+            elif trait == 'goodbye' and confidence > 0.6:
                 response = bye_response()
             elif trait == 'quote' and confidence > 0.6:
                 response = quotes_response()
+            elif trait == 'fact' and confidence > 0.6:
+                response = facts_response()
+            elif trait == 'QA' and confidence > 0.6:
+                response = question_answer_help_response()
             elif trait == 'motivation' and confidence > 0.6:
                 response = motivations_response()
             elif trait == 'puzzle' and confidence > 0.7:
