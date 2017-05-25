@@ -1,3 +1,26 @@
+"""
+MIT License
+
+Copyright (c) 2017 Harshal Priyadarshi
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+"""
 import json
 import random
 import wikipedia
@@ -45,12 +68,12 @@ def about_response():
 
 def question_answer_help_response():
     return "1. To ask a question\n<Question Text> ?\n\n" \
-           "Example:\nWho is Ubik?\n\n" \
+           "Example:\nWho is Qbeak?\n\n" \
            "NOTE: Your question should end with question mark(?)\n" \
            "------------------------------\n\n" \
            "2. To give an answer to a question\n[<question id (qid)>] <Answer Text>\n\n" \
-           "Example:\n[108] Ubik is a Zombie who is getting younger by getting you answers" \
-           "to your questions\n\nType 'done' to complete answering, or 'cancel' to cancel he present response\n\n" \
+           "Example:\n[108] Qbeak is a Questioning Answering Beak of the Bird. It chirps and answers." \
+           "to your questions\n\nType 'done' to complete answering, or 'cancel' to cancel the present response\n\n" \
            "NOTE: The above example is an answer to a question with qid=108\n" \
            "------------------------------\n"
 
@@ -67,7 +90,11 @@ def sample_examples_response():
            "* add tags\n" \
            "* remove tags\n" \
            "* joke please\n" \
+           "* motivate me\n" \
+           "* interesting facts\n" \
+           "* famous quotes\n" \
            "* i am getting bored\n" \
+           "* puzzle me\n" \
            "* Bye Qbeak"
 
 
