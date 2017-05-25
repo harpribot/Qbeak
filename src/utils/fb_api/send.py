@@ -44,7 +44,7 @@ def send_message(recipient_id, message_text):
     :param message_text: The message to be sent to the recipient.
     :return: None
     """
-    if message_text == 'NULL' or (is_ascii(message_text) is False) or message_text is None:
+    if message_text == 'NULL' or message_text is None:
         return
     log("sending message to {recipient}: {text}".format(recipient=recipient_id, text=message_text))
 
