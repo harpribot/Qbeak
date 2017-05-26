@@ -44,7 +44,7 @@ class BrainWit:
         """
         Processes query and returns Intent Trait, Trait Confidence, and Boolean value=True if trait present, else False
         :param message: The incoming message passed to the wit.ai platform
-        :return: Tuple(has_intent, trait, confidence)
+        :return: Tuple(has_intent, intent_dict, confidence)
         """
         r = requests.get('https://api.wit.ai/message?v=20170419&q=' + message, headers={
             'Authorization': 'Bearer %s' % WIT_AI_ACCESS_TOKEN
@@ -84,44 +84,44 @@ class BrainWit:
                     else:
                         response = confusion_response()
 
-            elif trait == 'greeting' and confidence > 0.6:
+            elif trait == 'greeting' and confidence > 0.8:
                 response = greeting_response()
-            elif trait == 'examples' and confidence > 0.6:
+            elif trait == 'examples' and confidence > 0.8:
                 response = sample_examples_response()
-            elif trait == 'goodbye' and confidence > 0.6:
+            elif trait == 'goodbye' and confidence > 0.8:
                 response = bye_response()
-            elif trait == 'quote' and confidence > 0.6:
+            elif trait == 'quote' and confidence > 0.8:
                 response = quotes_response()
-            elif trait == 'fact' and confidence > 0.6:
+            elif trait == 'fact' and confidence > 0.8:
                 response = facts_response()
-            elif trait == 'QA' and confidence > 0.6:
+            elif trait == 'QA' and confidence > 0.8:
                 response = question_answer_help_response()
-            elif trait == 'motivation' and confidence > 0.6:
+            elif trait == 'motivation' and confidence > 0.8:
                 response = motivations_response()
-            elif trait == 'puzzle' and confidence > 0.7:
+            elif trait == 'puzzle' and confidence > 0.8:
                 response = puzzles_response()
-            elif trait == 'help' and confidence > 0.7:
+            elif trait == 'help' and confidence > 0.8:
                 response = help_response()
-            elif trait == 'joke' and confidence > 0.6:
+            elif trait == 'joke' and confidence > 0.8:
                 response = joke_response()
             elif trait == 'about' and confidence > 0.8:
                 response = about_response()
-            elif trait == 'profile' and confidence > 0.7:
+            elif trait == 'profile' and confidence > 0.8:
                 response = self.user_handler.get_profile(sender_id)
-            elif trait == 'ranking' and confidence > 0.7:
+            elif trait == 'ranking' and confidence > 0.8:
                 response = self.user_handler.get_user_statistics(sender_id)
-            elif trait == 'subscription_restart' and confidence > 0.5:
+            elif trait == 'subscription_restart' and confidence > 0.8:
                 response = self.db_event_handler.restart_subscription(sender_id)
-            elif trait == 'subscription_stop' and confidence > 0.5:
+            elif trait == 'subscription_stop' and confidence > 0.8:
                 response = self.db_event_handler.pause_subscription(sender_id)
-            elif trait == 'tags_add' and confidence > 0.5:
+            elif trait == 'tags_add' and confidence > 0.8:
                 response = self.user_handler.send_tags_to_add()
-            elif trait == 'tags_remove' and confidence > 0.5:
+            elif trait == 'tags_remove' and confidence > 0.8:
                 response = self.user_handler.send_tags_to_remove(sender_id)
             elif trait == 'wiki' and 'wikipedia_search_query' in triggers_dict and confidence > 0.8:
                 search_query = triggers_dict['wikipedia_search_query'][0]
                 response = wiki_response(search_query)
-            elif trait == 'question' and confidence > 0.7:
+            elif trait == 'question' and confidence > 0.8:
                 response = self.question_handler.add_question(message, sender_id)
             else:
                 if message.endswith('?'):
