@@ -120,7 +120,7 @@ def handle_message(payload, sender_id, message_type="non-feedback"):
         else:
             response_text = handle.wit().brain().get_response(sender_id, payload)
     elif message_type == "feedback":
-        response_text = handle.event().postback().handle_postback(payload, sender_id)
+        response_text = handle.event().postback().handle_postback(payload, sender_id, handle.event().database())
     else:
         response_text = ""
         log("invalid message type sent to handler")

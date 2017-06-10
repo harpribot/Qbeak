@@ -40,7 +40,7 @@ class PostbackEvent:
         self.answer_handler = db_handle.answer()
         self.user_handler = db_handle.user()
 
-    def handle_postback(self, postback_payload, user_id):
+    def handle_postback(self, postback_payload, user_id, db_event_handler):
         """
         Handles following feedback:
         1. Moderation
@@ -54,7 +54,7 @@ class PostbackEvent:
         """
         data = json.loads(postback_payload)
         if data['intent'] == 'moderation':
-            self.moderation_update(data['entities']['tag'][0]['value'])
+            self.moderation_update(data['entities']['tag'][0]['value'], db_event_handler)
             response = "Thanks"
         elif data['intent'] == 'rating':
             response = self.answer_rating_update(data['entities']['tag'][0]['value'])
@@ -68,7 +68,7 @@ class PostbackEvent:
 
         return response
 
-    def moderation_update(self, payload):
+    def moderation_update(self, payload, db_event_handler):
         """
         Handles different types of moderation response provided by the moderator,
         and responds to the asker / answerer with appropriate feedback.
@@ -81,7 +81,7 @@ class PostbackEvent:
             if 'Answer:' in data:
                 mod_feedback = self.answer_handler.add_answer('done', user_id)
             elif data.startswith('Question:'):
-                mod_feedback = self.question_handler.add_question(data[9:], user_id)
+                mod_feedback = self.question_handler.add_question(data[9:], user_id, db_event_handler)
         elif response == "NO":
             mod_feedback = useless_message_response(data)
         elif response == "PROFANE":
