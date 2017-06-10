@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 from src.utils.log import log
-from src.event.databaseEvent import DatabaseEvent
 from src.utils.feedback import question_save_feedback
 
 
@@ -35,7 +34,7 @@ class Question:
         """
         self.cur = db.get_cursor()
 
-    def add_question(self, question, asker_id):
+    def add_question(self, question, asker_id, db_event_handler):
         """
         Adds the question to the database
 
@@ -50,7 +49,7 @@ class Question:
                 (question, str(asker_id), False))
             question_id = self.cur.fetchone()[0]
             is_question_stored = True
-            DatabaseEvent.new_question(question_id, question, asker_id)
+            db_event_handler.new_question(question_id, question, asker_id)
         except Exception, ex:
             log("Failed to insert question in the database. Exception thrown: {0}".format(ex))
 

@@ -1,6 +1,6 @@
 # Qbeak
 
-[![Join the chat at https://gitter.im/ubik-bot/Lobby](https://badges.gitter.im/ubik-bot/Lobby.svg)](https://gitter.im/ubik-bot/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/harpribot/Ubik.svg?branch=master)](https://travis-ci.org/harpribot/Ubik) [![Coverage Status](https://coveralls.io/repos/harpribot/Ubik/badge.svg?branch=master)](https://coveralls.io/r/harpribot/Ubik?branch=master) ![Python](https://img.shields.io/badge/python-2.7-blue.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/harpribot/Ubik/master/LICENSE)
+[![Join the chat at https://gitter.im/ubik-bot/Lobby](https://badges.gitter.im/ubik-bot/Lobby.svg)](https://gitter.im/ubik-bot/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Build Status](https://travis-ci.org/harpribot/Qbeak.svg?branch=master)](https://travis-ci.org/harpribot/Qbeak) [![Coverage Status](https://coveralls.io/repos/harpribot/Ubik/badge.svg?branch=master)](https://coveralls.io/r/harpribot/Ubik?branch=master) ![Python](https://img.shields.io/badge/python-2.7-blue.svg) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/harpribot/Ubik/master/LICENSE)
 
 An anonymous crowdsourced Q&amp;A forum with support of instant answers using NLP
 
@@ -15,7 +15,7 @@ Don't be scared about misusage of the platform. I will screen all questions and 
 # Usage
 
 The bot is live here:
-[Messanger](https://www.messenger.com/t/ubikbot)
+[Messanger](https://www.messenger.com/t/ubikbot/)
 
 The bot page is:
 [Facebook Page](https://www.facebook.com/ubikbot/)

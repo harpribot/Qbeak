@@ -69,7 +69,7 @@ class BrainWit:
 
         if not has_entity:
             if message.endswith('?'):
-                response = self.question_handler.add_question(message, sender_id)
+                response = self.question_handler.add_question(message, sender_id, self.db_event_handler)
             else:
                 response = confusion_response()
         elif 'intent' in triggers_dict:
@@ -122,12 +122,12 @@ class BrainWit:
                 search_query = triggers_dict['wikipedia_search_query'][0]
                 response = wiki_response(search_query)
             elif trait == 'question' and confidence > 0.8:
-                response = self.question_handler.add_question(message, sender_id)
+                response = self.question_handler.add_question(message, sender_id, self.db_event_handler)
             else:
                 if message.endswith('?'):
                     response_text = self.db_event_handler.check_for_moderation(message, sender_id, self)
                     if response_text == "OK":
-                        response = self.question_handler.add_question(message, sender_id)
+                        response = self.question_handler.add_question(message, sender_id, self.db_event_handler)
                     else:
                         response = None
                 else:

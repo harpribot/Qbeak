@@ -24,7 +24,6 @@ SOFTWARE.
 import re
 from src.utils.feedback import answer_save_feedback, finish_present_answer_feedback, response_not_requested_feedback,\
     answer_cancelled_feedback
-from src.event.databaseEvent import DatabaseEvent
 from src.utils.log import log
 
 
@@ -97,7 +96,7 @@ class Answer:
                 return "*Type 'done' when you are finished writing the answer\n" \
                        "* Type 'cancel' if you wish to cancel your answer\n"
 
-    def done_answering_response(self, responder_id):
+    def done_answering_response(self, responder_id, db_event_handler):
         """
         Triggers when the responder is done answering a question.
 
@@ -122,7 +121,7 @@ class Answer:
                          " WHERE user_id=%s;",
                          (question_id, responder_id))
         self.cur.execute("UPDATE users SET answering_buffer=%s WHERE user_id=%s", ('', responder_id))
-        DatabaseEvent.new_answer(question_id, answer_text, responder_id)
+        db_event_handler.new_answer(question_id, answer_text, responder_id)
         return answer_save_feedback(answer_stored)
 
     def cancel_present_answer(self, responder_id):
